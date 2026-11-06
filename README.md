@@ -12,11 +12,11 @@ We describe four stages of the research process, with verification divided into 
 | --- | --- | --- |
 | **F** | Problem formulation | **F-0:** Human-formulated question. **F-1:** AI materially refines the direction. **F-2:** AI originates the question and explains its significance under broad domain guidance. |
 | **S** | AI-mediated solution | **S-0:** Direct prompting. **S-1:** Interactive collaboration. **S-2:** Harnessed search or an agentic workflow. |
-| **A** | Analytical verification | **A-0:** A complete analytical check is not documented. **A-1:** Author verification. **A-2:** Independent expert verification. **A-3:** Formal verification in Lean or another proof assistant. |
+| **A** | Analytical verification | **A-0:** The indispensable analytical reasoning has not been completely checked by human experts or a proof assistant. **A-1:** Author verification. **A-2:** Independent expert verification. **A-3:** Formal verification in Lean or another proof assistant. |
 | **N** | Numerical certification | **N-0:** No numerical proof obligation. **N-1:** Ordinary numerical evidence. **N-2:** A rigorous finite certificate. **N-3:** Independent replay or formal integration of the certificate. |
 | **T** | Translation and articulation | **T-0:** Machine-led presentation. **T-1:** Author-revised or substantively human-directed AI exposition. **T-2:** Human-led articulation of the ideas, techniques, interpretations, and limitations. |
 
-These classifications describe different aspects of the process; they do not form a single score of research quality or intellectual credit. **ND** denotes insufficient disclosure to assign a classification. In particular, identifying the model used does not establish its solution mode.
+These classifications describe different aspects of the process; they do not form a single score of research quality or intellectual credit. A dash (**—**) denotes insufficient information to assign a classification. An asterisk (**\***) marks an inferred assignment based on the authors’ expert judgment. In particular, identifying the model used does not establish its solution mode.
 
 Several distinctions guide our assessment:
 
@@ -24,7 +24,7 @@ Several distinctions guide our assessment:
 - **An independent proof and a proof check provide different evidence.** Another proof can corroborate a theorem statement without verifying the particular derivation under review.
 - **Origin, verification, and articulation should be reported separately.** Human verification does not change the origin of an argument, and clear exposition does not by itself establish correctness.
 - **Different components may have different classifications.** A key lemma, construction, or certificate may warrant its own account even when the rest of the paper was developed differently.
-- **Reasoning/computation estimates are optional.** Such estimates describe the character of the mathematical work and should state their meaning and uncertainty. We do not require a percentage split between human and AI contributions.
+- **The Remark column is qualitative.** Reasoning-dominant, mixed, and computation-dominant describe the character of discovery and proof. “Mixed” does not imply equal shares. These expert judgments do not allocate human/AI credit or measure verification rigor.
 
 See the [paper](papers/from-formulation-to-articulation.pdf) for the full definitions and discussion.
 
@@ -50,4 +50,31 @@ For further guidance, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Scope and interpretation
 
-The collection is selective and will evolve as new cases and disclosures become available. Classifications reflect the documented public record and may be revised. **A-0** means that complete analytical verification is not documented; it does not establish that no check occurred. Inclusion in the collection is not an independent endorsement of a result's correctness.
+The collection is selective and will evolve as new cases and disclosures become available. Classifications reflect the documented public record and may be revised. An unspecified A-level means that the public information does not establish what analytical verification took place; it is distinct from A-0. Inferred classifications are explicitly marked with an asterisk. Inclusion in the collection is not an independent endorsement of a result's correctness.
+
+## Current snapshot
+
+The webpage reproduces all 24 rows of the revised manuscript, including claim-specific rows and the two OpenAI manuscripts. Cases were identified through an AI-assisted search of arXiv cs.IT preprints posted before October 30, 2026, assessing the latest versions before that date. The OpenAI collection is an explicit non-arXiv exception. The cases are illustrative rather than exhaustive.
+
+The table is available as [JSON](data/cases.json). It is also present directly in the HTML, so reading the classifications does not require JavaScript.
+
+## Files and rebuilding
+
+- `index.html`, `styles.css`, `app.js`, `config.js`: the GitHub Pages website.
+- `papers/from-formulation-to-articulation.pdf`: the revised manuscript.
+- `papers/source/ai_information_theory.tex` and `ai_information_theory_corrected.bib`: complete manuscript source and references.
+- `data/cases.json`: the 24 table entries, citation numbers, qualitative remarks, and inferred-assignment flags.
+- `.github/ISSUE_TEMPLATE/`: case and correction forms used by the contribution links.
+
+To rebuild the manuscript with a standard TeX Live installation:
+
+```sh
+cd papers/source
+pdflatex -interaction=nonstopmode -halt-on-error ai_information_theory.tex
+bibtex ai_information_theory
+pdflatex -interaction=nonstopmode -halt-on-error ai_information_theory.tex
+pdflatex -interaction=nonstopmode -halt-on-error ai_information_theory.tex
+cp ai_information_theory.pdf ../from-formulation-to-articulation.pdf
+```
+
+To update the existing site, copy this package into the root of `ct2641/AI_IT`, preserving the directories, and commit the changed files to the branch configured for GitHub Pages. No build step is needed for the website. Existing repository history and settings are not included in the ZIP and should be retained.

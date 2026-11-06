@@ -18,10 +18,10 @@ We seek documented AI assistance in developing information-theoretic results: th
 
 - Identify distinct components if their development or verification differs. An account of an intertwined collaboration can instead cover the paper as a whole.
 - Cite the actual disclosure. Do not infer an interaction mechanism solely from the model name.
-- Use **ND** for insufficient evidence to assign a process classification. **A-0** specifically denotes that complete analytical verification is not documented; it does not assert that no check happened. **N-0** means no numerical proof obligation, not missing information.
+- Use a dash (**—**) for insufficient evidence to assign a classification. Mark contextual expert inferences with an asterisk and explain consequential inferences. **A-0** denotes incomplete human or formal analytical verification, rather than missing disclosure alone. **N-0** means no numerical proof obligation, not missing information.
 - An exact certificate verifies its specified finite obligation. Explain the analytical reduction connecting it to the theorem and how that reduction was checked.
 - Independent proofs corroborate a theorem statement but do not verify each other's derivations. Formal verification should identify the formalized claim, trusted base, and correspondence to the paper's statement.
 - Report the scope of an expert check. Author responsibility or polished prose alone does not document a complete analytical check.
-- Percentages are optional. Distinguish the reasoning/computation balance from attribution between humans and AI.
+- Suggest a qualitative remark when useful: reasoning-dominant, mixed, or computation-dominant. Do not provide numerical R/C shares. Discovery computations count even when the final proof is analytical; these remarks do not allocate human/AI credit.
 
 Submissions and discussions are public. Inclusion records the evidence and does not constitute an independent verification of the theorem. Maintainers may request clarification, revise classifications, or leave a claim provisional.

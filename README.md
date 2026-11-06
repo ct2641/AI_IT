@@ -62,19 +62,7 @@ The table is available as [JSON](data/cases.json). It is also present directly i
 
 - `index.html`, `styles.css`, `app.js`, `config.js`: the GitHub Pages website.
 - `papers/from-formulation-to-articulation.pdf`: the revised manuscript.
-- `papers/source/ai_information_theory.tex` and `ai_information_theory_corrected.bib`: complete manuscript source and references.
 - `data/cases.json`: the 24 table entries, citation numbers, qualitative remarks, and inferred-assignment flags.
 - `.github/ISSUE_TEMPLATE/`: case and correction forms used by the contribution links.
-
-To rebuild the manuscript with a standard TeX Live installation:
-
-```sh
-cd papers/source
-pdflatex -interaction=nonstopmode -halt-on-error ai_information_theory.tex
-bibtex ai_information_theory
-pdflatex -interaction=nonstopmode -halt-on-error ai_information_theory.tex
-pdflatex -interaction=nonstopmode -halt-on-error ai_information_theory.tex
-cp ai_information_theory.pdf ../from-formulation-to-articulation.pdf
-```
 
 To update the existing site, copy this package into the root of `ct2641/AI_IT`, preserving the directories, and commit the changed files to the branch configured for GitHub Pages. No build step is needed for the website. Existing repository history and settings are not included in the ZIP and should be retained.
